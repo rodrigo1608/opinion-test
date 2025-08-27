@@ -33,9 +33,13 @@ Um sistema de cadastro de usuários desenvolvido em Laravel 12 com validações 
 
 ### Instalação
 
-**Clone o repositório**
-git clone https://github.com/rodrigo1608/opinion-test.git
+**1. Clone o repositório**
+
+
+git clone [https://github.com/rodrigo1608/opinion-test.git](https://github.com/rodrigo1608/opinion-test.git)
+
 ou
+
 git clone git@github.com:rodrigo1608/opinion-test.git
 
 **Instale as dependências**
@@ -56,7 +60,7 @@ php artisan migrate
 **Inicie o servidor**
 php artisan serve
 
-###Como Funciona
+### Como Funciona
 **Validação de CPF**
 
 O sistema implementa o algoritmo oficial de validação de CPF, verificando:
