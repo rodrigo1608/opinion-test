@@ -47,9 +47,13 @@ ou
 
   `git clone git@github.com:rodrigo1608/opinion-test.git`
   
+  <br>
+  
 **Instale as dependências**
 
 `composer install`
+
+<br>
 
 **Configure o ambiente**
 
@@ -57,15 +61,21 @@ ou
 
 `php artisan key:generate`
 
+<br>
+
 **Configure o banco de dados no arquivo .env**
 
 `DB_DATABASE=seu_banco
 DB_USERNAME=seu_usuario
 DB_PASSWORD=sua_senha`
 
+<br>
+
 **Execute as migrations**
 
 `php artisan migrate`
+
+<br>
 
 **Inicie o servidor**
 
