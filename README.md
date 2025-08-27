@@ -1,4 +1,4 @@
-# Teste Técnico Opinion Box
+# Teste Técnico Opinion Box ![Logo Opinion Box](https://www.opinionbox.com/wp-content/themes/institucional/assets/img/opinionbox_logo.svg)
 ### Sistema de Cadastro de Usuários com Validação
 
 Um sistema de cadastro de usuários desenvolvido em Laravel 12 com validações  de CPF e integração com a API dos Correios para preenchimento automático de endereços via CEP.
@@ -29,7 +29,6 @@ Um sistema de cadastro de usuários desenvolvido em Laravel 12 com validações 
     Composer
 
 ### Instalação
-bash
 
 **Clone o repositório**
 git clone https://github.com/rodrigo1608/opinion-test.git
