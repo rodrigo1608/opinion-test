@@ -2,7 +2,7 @@
 
 ---
 
-# Teste Técnico
+# Teste Técnico Opinion Box
 
 ### Sistema de Cadastro de Usuários com Validação
 
@@ -26,7 +26,7 @@ Um sistema de cadastro de usuários desenvolvido em Laravel 12 com validações 
 * Laravel 12 - Framework PHP
 * MySQL - Banco de dados relacional
 * API dos Correios - Consulta de CEP
-* Tailwind CSS
+* Tailwind
 
 ---
 
