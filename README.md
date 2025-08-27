@@ -12,7 +12,7 @@ Um sistema de cadastro de usuários desenvolvido em Laravel 12 com validações 
 - Persistência em MySQL com migrations e seeders
 - Validações de Formulário
 
-** Tecnologias Utilizadas **
+**Tecnologias Utilizadas**
 
     Laravel 12 - Framework PHP
 
@@ -22,7 +22,7 @@ Um sistema de cadastro de usuários desenvolvido em Laravel 12 com validações 
 
     Tailwind    
 
-** Pré-requisitos **
+**Pré-requisitos**
 
     PHP 8.2+
 
@@ -31,31 +31,31 @@ Um sistema de cadastro de usuários desenvolvido em Laravel 12 com validações 
 ###Instalação
 bash
 
-** Clone o repositório **
+**Clone o repositório**
 git clone https://github.com/rodrigo1608/opinion-test.git
 ou
 git clone git@github.com:rodrigo1608/opinion-test.git
 
-** Instale as dependências **
+**Instale as dependências**
 composer install
 
-** Configure o ambiente **
+**Configure o ambiente**
 cp .env.example .env
 php artisan key:generate
 
-# Configure o banco de dados no arquivo .env
+**Configure o banco de dados no arquivo .env**
 DB_DATABASE=seu_banco
 DB_USERNAME=seu_usuario
 DB_PASSWORD=sua_senha
 
-# Execute as migrations
+**Execute as migrations**
 php artisan migrate
 
-# Inicie o servidor
+**Inicie o servidor**
 php artisan serve
 
-🎯 Como Funciona
-Validação de CPF
+###Como Funciona
+**Validação de CPF**
 
 O sistema implementa o algoritmo oficial de validação de CPF, verificando:
 
@@ -65,7 +65,7 @@ O sistema implementa o algoritmo oficial de validação de CPF, verificando:
 
     CPFs inválidos conhecidos
 
-Busca por CEP
+**Busca por CEP**
 
 Ao digitar o CEP, o sistema:
 
