@@ -1,11 +1,13 @@
-📝 Sistema de Cadastro de Usuários com Validação
+Opinion Box Teste Técnico
+Sistema de Cadastro de Usuários com Validação
 
-Um sistema de cadastro de usuários desenvolvido em Laravel 12 com validações avançadas de CPF e integração com a API dos Correios para preenchimento automático de endereços via CEP.
-🚀 Funcionalidades Principais
+Um sistema de cadastro de usuários desenvolvido em Laravel 12 com validações  de CPF e integração com a API dos Correios para preenchimento automático de endereços via CEP.
+
+Funcionalidades Principais
 
     ✅ Cadastro de Usuários com nome completo
 
-    🔍 Validação Avançada de CPF com algoritmo próprio
+    🔍 Validação de CPF
 
     📮 Integração com API dos Correios para busca de endereços
 
@@ -13,7 +15,7 @@ Um sistema de cadastro de usuários desenvolvido em Laravel 12 com validações 
 
     💾 Persistência em MySQL com migrations e seeders
 
-    🛡️ Validações de Formulário robustas
+    🛡️ Validações de Formulário
 
 🛠️ Tecnologias Utilizadas
 
@@ -23,20 +25,21 @@ Um sistema de cadastro de usuários desenvolvido em Laravel 12 com validações 
 
     API dos Correios - Consulta de CEP
 
-    Bootstrap - Interface de usuário (opcional)
+    Tailwind    
 
-    JavaScript - Para requisições AJAX
-
-📋 Pré-requisitos
+Pré-requisitos
 
     PHP 8.2+
 
     Composer
- Instalação
+
+Instalação
 bash
 
 # Clone o repositório
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+git clone https://github.com/rodrigo1608/opinion-test.git
+ou
+git clone git@github.com:rodrigo1608/opinion-test.git
 
 # Instale as dependências
 composer install
