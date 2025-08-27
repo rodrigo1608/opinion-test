@@ -9,13 +9,21 @@ Um sistema de cadastro de usuários desenvolvido em Laravel 12 com validações 
 **Funcionalidades Principais**
 
 - Cadastro de Usuários com nome completo
+  
 - Validação de CPF
+
 - Integração com API dos Correios para busca de endereços
+
 - Preenchimento Automático de campos de endereço via CEP
+
 - Persistência em MySQL com migrations e seeders
+
 - Validações de Formulário
 
+
+
 **Tecnologias Utilizadas**
+
 
     Laravel 12 - Framework PHP
 
@@ -25,11 +33,14 @@ Um sistema de cadastro de usuários desenvolvido em Laravel 12 com validações 
 
     Tailwind    
 
+
 **Pré-requisitos**
+
 
     PHP 8.2+
 
     Composer
+
 
 ### Instalação
 
@@ -42,11 +53,16 @@ ou
 
 git clone git@github.com:rodrigo1608/opinion-test.git
 
+
 **Instale as dependências**
+
 composer install
 
+
 **Configure o ambiente**
+
 cp .env.example .env
+
 php artisan key:generate
 
 **Configure o banco de dados no arquivo .env**
