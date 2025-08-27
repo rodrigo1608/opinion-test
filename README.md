@@ -65,9 +65,11 @@ ou
 
 **Configure o banco de dados no arquivo .env**
 
-`DB_DATABASE=seu_banco
-DB_USERNAME=seu_usuario
-DB_PASSWORD=sua_senha`
+`DB_DATABASE=seu_banco`
+
+`DB_USERNAME=seu_usuario`
+
+`DB_PASSWORD=sua_senha`
 
 <br>
 
