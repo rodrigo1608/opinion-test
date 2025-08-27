@@ -3,7 +3,7 @@
 
 Um sistema de cadastro de usuários desenvolvido em Laravel 12 com validações  de CPF e integração com a API dos Correios para preenchimento automático de endereços via CEP.
 
-Funcionalidades Principais
+** Funcionalidades Principais **
 
     ✅ Cadastro de Usuários com nome completo
 
