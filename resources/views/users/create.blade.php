@@ -1,32 +1,76 @@
 @extends('layouts.app')
-@section('title', 'Create User')
+@section('title', 'Cadastre-se na Opinion Box')
 
 @section('content')
 
-    <h1 class="">Criar usuário</h1>
+    <div class="flex flex-col h-screen  main-background items-center justify-center py-8">
 
-    <form method="POST" action="{{ route('user.store') }}"
-        class="flex flex-col max-w-80 bg-gray-300 gap-4 px-4 py-8 rounded-md">
-        {{--  --}}
-        @csrf
+        <div
+            class="md:h-auto md:max-w-4xl flex md:flex-row flex-col gap-4 md:gap-0 justify-start items-start w-full md:items-end md:justify-between md:mb-8">
 
-        <div class="flex flex-col">
-            <label for="name" class="text-xs text-gray-500">Nome</label>
-            <input type="text" id="name" name="name" class="border rounded-md border-gray-500">
+            <img class="h-6 md:h-12 self-center"
+                src="https://www.opinionbox.com/wp-content/themes/institucional/assets/img/opinionbox_logo.svg"
+                alt="Logo Opinion Box">
+
+            <h2 class="text-xs ml-8 md:text-xl my-2 md:m-0 text-white text-center">
+                Cadastro de Usuário
+            </h2>
         </div>
 
-        <div class="flex flex-col">
-            <label for="email" class="text-xs text-gray-500">Email</label>
-            <input type="email" id="email" name="email" class="border rounded-md border-gray-500">
+        <div class="max-w-lg md:max-w-4xl p-8 bg-white ">
+
+            <form class="flex flex-col gap-6" method="POST" action="/user">
+                @csrf
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <div class="flex flex-col gap-6">
+                        <x-forms.input label="Nome Completo" id="name" name="name" type="text"
+                            placeholder="Ex: João da Silva" />
+                        <x-forms.input label="CPF" id="cpf" name="cpf" type="text"
+                            placeholder="Ex: 000.000.000-00" />
+                        <x-forms.input label="CEP" id="cep" name="cep" type="text"
+                            placeholder="Ex: 00000-000" />
+                    </div>
+
+                    <div class="flex flex-col gap-6">
+                        <x-forms.input label="Rua" id="street" name="address[street]" type="text" />
+                        <x-forms.input label="Cidade" id="city" name="address[city]" type="text" />
+                        <div class="grid grid-cols-3 md:grid-cols-3 gap-6">
+                            <x-forms.input label="Número" id="number" name="address[number]" type="text" />
+                            <x-forms.input label="Estado" id="state" name="address[state]" type="text" />
+                            <x-forms.input label="País" id="country" name="address[country]" type="text" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="flex flex-col items-center mt-6">
+
+                    <x-forms.button type="submit" class="flex gap-2 items-center justify-center">
+
+                        <span>Cadastrar</span>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-5 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                        </svg>
+
+                    </x-forms.button>
+                    <a href="{{ route('user.create') }}"
+                        class="justify-center md:justify-start my-4  mt-8  flex gap-2 text-sm text-gray-500 text-purple-600 hover:underline">
+                            Já tem conta?
+                        Faça login
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                            </svg>
+                    </a>
+                </div>
+
+            </form>
         </div>
-
-        <div class="flex flex-col">
-            <label for="password" class="text-xs text-gray-500">Password</label>
-            <input type="password" id="password" name="password" class="border rounded-md border-gray-500">
-        </div>
-
-        <button type="submit"
-            class="cursor-pointer bg-gray-400 rounded-md py-2 px-4 text-sm   mt-8 self-end">Criar</button>
-
-    </form>
+    </div>
 @endsection
