@@ -41,17 +41,47 @@
                             @enderror
                         </div>
 
-                        <x-forms.input label="CEP" id="cep" name="cep" type="text"
+                       <div>
+                         <x-forms.input label="CEP" id="cep" name="cep" type="text"
                             placeholder="Ex: 00000-000" />
+                        @error('cep')
+                            <span class="text-red-500 text-xs ">{{ $message }}</span>
+                        @enderror
+                       </div>
                     </div>
 
                     <div class="flex flex-col gap-6">
-                        <x-forms.input label="Rua" id="street" name="address[street]" type="text" />
-                        <x-forms.input label="Cidade" id="city" name="address[city]" type="text" />
+                        <div>
+                            <x-forms.input label="Rua" id="street" name="address[street]" type="text" />
+                            @error('address.street')
+                                <span class="text-red-500 text-xs ">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div>
+                            <x-forms.input label="Cidade" id="city" name="address[city]" type="text" />
+                            @error('address.city')
+                                <span class="text-red-500 text-xs ">{{ $message }}</span>
+                            @enderror
+                        </div>
                         <div class="grid grid-cols-3 md:grid-cols-3 gap-6">
-                            <x-forms.input label="Número" id="number" name="address[number]" type="text" />
-                            <x-forms.input label="Estado" id="state" name="address[state]" type="text" />
-                            <x-forms.input label="País" id="country" name="address[country]" type="text" />
+                            <div>
+                                <x-forms.input label="Número" id="number" name="address[number]" type="text" />
+                                @error('address.number')
+                                    <span class="text-red-500 text-xs ">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div>
+                                <x-forms.input label="Estado" id="state" name="address[state]" type="text" />
+                                @error('address.state')
+                                    <span class="text-red-500 text-xs ">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div>
+                                <x-forms.input label="País" id="country" name="address[country]" type="text" />
+                                @error('address.country')
+                                    <span class="text-red-500 text-xs ">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
                     </div>
 
@@ -85,4 +115,28 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cepInput = document.getElementById('cep');
+
+            cepInput.addEventListener('blur', function() {
+                const cep = cepInput.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+
+                if (cep.length === 8) {
+                    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (!data.erro) {
+                                document.getElementById('street').value = data.logradouro;
+                                document.getElementById('city').value = data.localidade;
+                                document.getElementById('state').value = data.uf;
+                                document.getElementById('country').value = 'Brasil';
+                            }
+                        })
+                        .catch(error => console.error('Erro na requisição:', error));
+                }
+            });
+        });
+    </script>
 @endsection
