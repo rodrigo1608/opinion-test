@@ -17,6 +17,7 @@ class User extends Authenticatable
         'cpf',
         'cep',
         'street',
+        'neighborhood',
         'city',
         'state',
         'number',

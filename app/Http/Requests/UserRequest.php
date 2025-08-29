@@ -41,6 +41,7 @@ class UserRequest extends FormRequest
             'cpf' => [$nullAbleOrRequired, new Cpf],
             'cep' => [$nullAbleOrRequired, 'string', 'digits:8'],
             'street' => [$nullAbleOrRequired, 'string'],
+            'neighborhood' => [$nullAbleOrRequired, 'string'], 
             'city' => [$nullAbleOrRequired, 'string'],
             'state' => [$nullAbleOrRequired, new BrazilianState],
             'number' => [$nullAbleOrRequired, 'string'],
@@ -72,11 +73,12 @@ class UserRequest extends FormRequest
             'cpf.required' => 'O campo CPF é obrigatório.',
             'cep.required' => 'O campo CEP é obrigatório.',
             'cep.regex' => 'O formato do CEP é inválido.',
-            'address.street.required' => 'O campo Rua é obrigatório.',
-            'address.city.required' => 'O campo Cidade é obrigatório.',
-            'address.state.required' => 'O campo Estado é obrigatório.',
-            'address.number.required' => 'O campo Número é obrigatório.',
-            'address.country.required' => 'O campo País é obrigatório.',
+            'street.required' => 'O campo Rua é obrigatório.',
+            'neighborhood.required' => 'O campo Bairro é obrigatório.',
+            'city.required' => 'O campo Cidade é obrigatório.',
+            'state.required' => 'O campo Estado é obrigatório.',
+            'number.required' => 'O campo Número é obrigatório.',
+            'country.required' => 'O campo País é obrigatório.',
         ];
     }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('cpf', 14)->unique();
             $table->string('cep', 8);
             $table->string('street');
+            $table->string('neighborhood'); 
             $table->string('city');
             $table->string('state', 2);
             $table->string('number');
