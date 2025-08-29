@@ -8,3 +8,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::resource('/user', UserController::class);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
