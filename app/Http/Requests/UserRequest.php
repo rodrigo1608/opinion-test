@@ -31,7 +31,7 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
-
+        
         $isUpdateRequest = $this->method() === 'PATCH' || $this->method() === 'PUT';
 
         $nullAbleOrRequired = $isUpdateRequest ? 'nullable' : 'required';
@@ -40,11 +40,11 @@ class UserRequest extends FormRequest
             'name' => [$nullAbleOrRequired, 'string', 'min:3', 'max:30'],
             'cpf' => [$nullAbleOrRequired, new Cpf],
             'cep' => [$nullAbleOrRequired, 'string', 'digits:8'],
-            'address.street' => [$nullAbleOrRequired, 'string'],
-            'address.city' => [$nullAbleOrRequired, 'string'],
-            'address.state' => [$nullAbleOrRequired, new BrazilianState],
-            'address.number' => [$nullAbleOrRequired, 'string'],
-            'address.country' => [$nullAbleOrRequired, 'string'],
+            'street' => [$nullAbleOrRequired, 'string'],
+            'city' => [$nullAbleOrRequired, 'string'],
+            'state' => [$nullAbleOrRequired, new BrazilianState],
+            'number' => [$nullAbleOrRequired, 'string'],
+            'country' => [$nullAbleOrRequired, 'string'],
         ];
 
         return $baseRules;
