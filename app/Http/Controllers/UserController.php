@@ -29,9 +29,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-
-
-        $request->validate();
+        dd('$request');
     }
 
     /**
