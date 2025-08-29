@@ -4,7 +4,6 @@
 @section('content')
 
     <div class="flex flex-col h-screen  main-background items-center justify-center py-8">
-
         <div
             class="md:h-auto md:max-w-4xl flex md:flex-row flex-col gap-4 md:gap-0 justify-start items-start w-full md:items-end md:justify-between md:mb-8">
 
@@ -19,16 +18,29 @@
 
         <div class="max-w-lg md:max-w-4xl p-8 bg-white ">
 
-            <form class="flex flex-col gap-6" method="POST" action="/user">
+            <form class="flex flex-col gap-6" method="POST" action="{{ route('user.store') }}">
                 @csrf
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                     <div class="flex flex-col gap-6">
-                        <x-forms.input label="Nome Completo" id="name" name="name" type="text"
-                            placeholder="Ex: João da Silva" />
-                        <x-forms.input label="CPF" id="cpf" name="cpf" type="text"
-                            placeholder="Ex: 000.000.000-00" />
+
+                        <div>
+                            <x-forms.input label="Nome Completo" id="name" name="name" type="text"
+                                placeholder="Ex: João da Silva" />
+                            @error('name')
+                                <span class="text-red-500 text-xs ">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <x-forms.input label="CPF" id="cpf" name="cpf" type="text"
+                                placeholder="Ex: 000.000.000-00" />
+                            @error('cpf')
+                                <span class="text-red-500 text-xs ">{{ $message }}</span>
+                            @enderror
+                        </div>
+
                         <x-forms.input label="CEP" id="cep" name="cep" type="text"
                             placeholder="Ex: 00000-000" />
                     </div>
@@ -58,15 +70,15 @@
                         </svg>
 
                     </x-forms.button>
-                    <a href="{{ route('user.create') }}"
+                    <a href="{{ route('welcome') }}"
                         class="justify-center md:justify-start my-4  mt-8  flex gap-2 text-sm text-gray-500 text-purple-600 hover:underline">
-                            Já tem conta?
+                        Já tem conta?
                         Faça login
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="size-5">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-                            </svg>
+                            stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                        </svg>
                     </a>
                 </div>
 
