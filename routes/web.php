@@ -11,3 +11,4 @@ Route::get('/', function () {
 Route::resource('/user', UserController::class);
 
 Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
+Route::get('/dashboard/ceps', [DashboardController::class,'neighborhoodCepCount'])->name('dashboard.moreThanOneCep');

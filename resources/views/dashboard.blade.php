@@ -157,9 +157,9 @@
 
             <div
                 class="mt-8 flex flex-col md:flex-row gap-4 md:items-center gap-8 md:gap-0 justify-center md:justify-between text-sm ">
-                <a href="#" class="text-sm text-purple-600 hover:underline">Bairros com mais de um CEP</a>
+                <a href="{{ route('dashboard.moreThanOneCep') }}" class="text-sm text-purple-600 hover:underline">Quantidade de CEP por Bairro</a>
 
-                <a href="#" class="text-sm text-purple-600 hover:underline">Quantidade de CEP por Bairro</a>
+                {{-- <a href="#" class="text-sm text-purple-600 hover:underline">Bairros com mais de um CEP</a> --}}
 
                 <x-forms.button type="button" onclick="window.location.href='{{ route('user.create') }}'"
                     class="flex gap-2 items-center justify-center text-xs">
