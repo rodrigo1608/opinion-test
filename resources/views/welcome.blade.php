@@ -37,7 +37,7 @@
 
                 </form>
                 <a href="{{ route('user.create') }}"
-                    class="justify-center md:justify-start my-4   flex gap-2 text-sm text-gray-500 text-purple-600 hover:underline">
+                    class="justify-center md:justify-start my-4 flex gap-2 text-sm text-gray-500 text-purple-600 hover:underline">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-5 text-purple-600">
                         <path stroke-linecap="round" stroke-linejoin="round"
