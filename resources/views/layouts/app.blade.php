@@ -43,17 +43,7 @@
 </head>
 
 <body class="h-dvh w-full bg-gray-200 box-border main-font">
-    <header>
-
-    </header>
-    <main class="h-full w-full flex flex-col justify-center items-center ">
-        @yield('content')
-    </main>
-
-    <footer>
-
-    </footer>
-
+    @yield('content')
 </body>
 
 </html>

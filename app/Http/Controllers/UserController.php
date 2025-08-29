@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUpdateUserRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class UserController extends Controller
 {
@@ -13,7 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        // Aqui você pode buscar os usuários para a página index
+        $users = User::all();
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -21,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users/create');
+        return view('users.create');
     }
 
     /**
@@ -30,8 +34,21 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
 
+        DB::beginTransaction();
 
-        $request->validate();
+        try {
+
+            $user = User::create($request->validated());
+
+            DB::commit();
+
+            return redirect()->route('dashboard')->with('success', 'Usuário cadastrado com sucesso!');
+        } catch (Throwable $e) {
+
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'Erro ao cadastrar o usuário. Por favor, tente novamente.');
+        }
     }
 
     /**
@@ -42,20 +59,34 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(User $user)
     {
-        //
+
+        return view('users/edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
-        //
+
+        DB::beginTransaction();
+
+        try {
+            $validatedData = $request->validated();
+
+            $user->update($validatedData);
+
+            DB::commit();
+
+            return redirect()->route('dashboard')->with('success', 'Usuário atualizado com sucesso!');
+        } catch (Throwable $e) {
+
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'Erro ao cadastrar o usuário. Por favor, tente novamente.');
+        }
     }
 
     /**
@@ -63,6 +94,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('dashboard')->with('success', 'Usuário excluído com sucesso!');
     }
 }
