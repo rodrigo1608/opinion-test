@@ -25,7 +25,7 @@
             @endif
 
             <div class="flex justify-end mb-4">
-                <a href="{{ route('users.create') }}" class="bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-colors duration-300">
+                <a href="{{ route('user.create') }}" class="bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-colors duration-300">
                     Cadastrar Novo Usuário
                 </a>
             </div>

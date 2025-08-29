@@ -36,14 +36,19 @@ class UserController extends Controller
        
         DB::beginTransaction();
 
-        
+        try {
             
             $user = User::create($request->validated());
             
             DB::commit();
             
             return view('dashboard')->with('success', 'Usuário cadastrado com sucesso!');
-       
+        } catch (Throwable $e) {
+           
+            DB::rollBack();
+            
+            return redirect()->back()->with('error', 'Erro ao cadastrar o usuário. Por favor, tente novamente.');
+        }
     }
 
     /**

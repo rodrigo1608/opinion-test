@@ -52,14 +52,14 @@
 
                     <div class="flex flex-col gap-6">
                         <div>
-                            <x-forms.input label="Rua" id="street" name="address[street]" type="text"
+                            <x-forms.input label="Rua" id="street" name="street" type="text"
                                 value="{{ old('address.street') }}" />
                             @error('address.street')
                                 <span class="text-red-500 text-xs ">{{ $message }}</span>
                             @enderror
                         </div>
                         <div>
-                            <x-forms.input label="Cidade" id="city" name="address[city]" type="text"
+                            <x-forms.input label="Cidade" id="city" name="city" type="text"
                                 value="{{ old('address.city') }}" />
                             @error('address.city')
                                 <span class="text-red-500 text-xs ">{{ $message }}</span>
@@ -67,21 +67,21 @@
                         </div>
                         <div class="grid grid-cols-3 md:grid-cols-3 gap-6">
                             <div>
-                                <x-forms.input label="Número" id="number" name="address[number]" type="text"
+                                <x-forms.input label="Número" id="number" name="number" type="text"
                                     value="{{ old('address.number') }}" />
                                 @error('address.number')
                                     <span class="text-red-500 text-xs ">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div>
-                                <x-forms.input label="Estado" id="state" name="address[state]" type="text"
+                                <x-forms.input label="Estado" id="state" name="state" type="text"
                                     value="{{ old('address.state') }}" />
                                 @error('address.state')
                                     <span class="text-red-500 text-xs ">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div>
-                                <x-forms.input label="País" id="country" name="address[country]" type="text"
+                                <x-forms.input label="País" id="country" name="country" type="text"
                                     value="{{ old('address.country') }}" />
                                 @error('address.country')
                                     <span class="text-red-500 text-xs ">{{ $message }}</span>
