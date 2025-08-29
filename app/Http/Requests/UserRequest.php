@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\BrazilianState;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use App\Rules\Cpf;
@@ -38,12 +39,12 @@ class UserRequest extends FormRequest
         $baseRules = [
             'name' => [$nullAbleOrRequired, 'string', 'min:3', 'max:30'],
             'cpf' => [$nullAbleOrRequired, new Cpf],
-            'cep' => ['required', 'string', 'digits:8'],
-            'address.street' => 'required|string',
-            'address.city' => 'required|string',
-            'address.state' => 'required|string',
-            'address.number' => 'required|string',
-            'address.country' => 'required|string',
+            'cep' => [$nullAbleOrRequired, 'string', 'digits:8'],
+            'address.street' => [$nullAbleOrRequired, 'string'],
+            'address.city' => [$nullAbleOrRequired, 'string'],
+            'address.state' => [$nullAbleOrRequired, new BrazilianState],
+            'address.number' => [$nullAbleOrRequired, 'string'],
+            'address.country' => [$nullAbleOrRequired, 'string'],
         ];
 
         return $baseRules;
@@ -52,7 +53,7 @@ class UserRequest extends FormRequest
     public function withValidator($validator)
     {
         $validator->after(function ($validator) {
-            
+
             $response = Http::get("https://viacep.com.br/ws/{$this->cep}/json/")->json();
 
             if (isset($response['erro']) && $response['erro']) {
