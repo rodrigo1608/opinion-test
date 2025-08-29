@@ -31,17 +31,19 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
-        
+
         $isUpdateRequest = $this->method() === 'PATCH' || $this->method() === 'PUT';
+
+        $userId = $this->route('user');
 
         $nullAbleOrRequired = $isUpdateRequest ? 'nullable' : 'required';
 
         $baseRules = [
             'name' => [$nullAbleOrRequired, 'string', 'min:3', 'max:30'],
-            'cpf' => [$nullAbleOrRequired, new Cpf],
+            'cpf' => [$nullAbleOrRequired, new Cpf, Rule::unique('users', 'cpf')->ignore($userId),],
             'cep' => [$nullAbleOrRequired, 'string', 'digits:8'],
             'street' => [$nullAbleOrRequired, 'string'],
-            'neighborhood' => [$nullAbleOrRequired, 'string'], 
+            'neighborhood' => [$nullAbleOrRequired, 'string'],
             'city' => [$nullAbleOrRequired, 'string'],
             'state' => [$nullAbleOrRequired, new BrazilianState],
             'number' => [$nullAbleOrRequired, 'string'],
@@ -71,6 +73,7 @@ class UserRequest extends FormRequest
             'name.min' => 'O campo Nome Completo precisa ter no mínimo :min caracteres.',
             'name.max' => 'O campo Nome Completo deve ter no máximo :max caracteres.',
             'cpf.required' => 'O campo CPF é obrigatório.',
+            'cpf.unique' => 'O CPF informado já está cadastrado.',
             'cep.required' => 'O campo CEP é obrigatório.',
             'cep.regex' => 'O formato do CEP é inválido.',
             'street.required' => 'O campo Rua é obrigatório.',
