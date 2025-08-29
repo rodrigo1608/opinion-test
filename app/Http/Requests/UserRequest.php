@@ -4,7 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use App\Rules\Cpf; 
+use App\Rules\Cpf;
+use Illuminate\Support\Facades\Http;
 
 class UserRequest extends FormRequest
 {
@@ -15,6 +16,12 @@ class UserRequest extends FormRequest
     {
         return true;
     }
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'cep' => str_replace('-', '', $this->cep),
+        ]);
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -22,18 +29,36 @@ class UserRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {       
+    {
 
         $isUpdateRequest = $this->method() === 'PATCH' || $this->method() === 'PUT';
 
         $nullAbleOrRequired = $isUpdateRequest ? 'nullable' : 'required';
 
         $baseRules = [
-            'name' => [$nullAbleOrRequired, 'string','min:3', 'max:30'],
-            'cpf' => [$nullAbleOrRequired, new Cpf],             
+            'name' => [$nullAbleOrRequired, 'string', 'min:3', 'max:30'],
+            'cpf' => [$nullAbleOrRequired, new Cpf],
+            'cep' => ['required', 'string', 'digits:8'],
+            'address.street' => 'required|string',
+            'address.city' => 'required|string',
+            'address.state' => 'required|string',
+            'address.number' => 'required|string',
+            'address.country' => 'required|string',
         ];
 
         return $baseRules;
+    }
+
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            
+            $response = Http::get("https://viacep.com.br/ws/{$this->cep}/json/")->json();
+
+            if (isset($response['erro']) && $response['erro']) {
+                $validator->errors()->add('cep', 'O CEP informado é inválido.');
+            }
+        });
     }
 
     public function messages(): array
@@ -44,6 +69,13 @@ class UserRequest extends FormRequest
             'name.min' => 'O campo Nome Completo precisa ter no mínimo :min caracteres.',
             'name.max' => 'O campo Nome Completo deve ter no máximo :max caracteres.',
             'cpf.required' => 'O campo CPF é obrigatório.',
+            'cep.required' => 'O campo CEP é obrigatório.',
+            'cep.regex' => 'O formato do CEP é inválido.',
+            'address.street.required' => 'O campo Rua é obrigatório.',
+            'address.city.required' => 'O campo Cidade é obrigatório.',
+            'address.state.required' => 'O campo Estado é obrigatório.',
+            'address.number.required' => 'O campo Número é obrigatório.',
+            'address.country.required' => 'O campo País é obrigatório.',
         ];
     }
 }
