@@ -42,7 +42,7 @@ class UserController extends Controller
             
             DB::commit();
             
-            return redirect()->route('dashboard')->with('success', 'Usuário cadastrado com sucesso!');
+            return redirect()->route('dashboard.index')->with('success', 'Usuário cadastrado com sucesso!');
         } catch (Throwable $e) {
            
             DB::rollBack();

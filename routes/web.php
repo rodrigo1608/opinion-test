@@ -10,4 +10,4 @@ Route::get('/', function () {
 
 Route::resource('/user', UserController::class);
 
-Route::get('/dashboard', DashboardController::class)->name('dashboard');
+Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard.index');
