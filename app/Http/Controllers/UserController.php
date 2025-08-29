@@ -33,20 +33,20 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-       
+
         DB::beginTransaction();
 
         try {
-            
+
             $user = User::create($request->validated());
-            
+
             DB::commit();
-            
+
             return redirect()->route('dashboard')->with('success', 'Usuário cadastrado com sucesso!');
         } catch (Throwable $e) {
-           
+
             DB::rollBack();
-            
+
             return redirect()->back()->with('error', 'Erro ao cadastrar o usuário. Por favor, tente novamente.');
         }
     }
@@ -59,20 +59,34 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(User $user)
     {
-        //
+
+        return view('users/edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
-        //
+
+        DB::beginTransaction();
+
+        try {
+            $validatedData = $request->validated();
+
+            $user->update($validatedData);
+
+            DB::commit();
+
+            return redirect()->route('dashboard')->with('success', 'Usuário atualizado com sucesso!');
+        } catch (Throwable $e) {
+
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'Erro ao cadastrar o usuário. Por favor, tente novamente.');
+        }
     }
 
     /**
@@ -80,6 +94,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('dashboard')->with('success', 'Usuário excluído com sucesso!');
     }
 }
