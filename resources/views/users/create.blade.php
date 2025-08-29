@@ -27,7 +27,7 @@
 
                         <div>
                             <x-forms.input label="Nome Completo" id="name" name="name" type="text"
-                                placeholder="Ex: João da Silva" />
+                                placeholder="Ex: João da Silva" value="{{ old('name') }}" />
                             @error('name')
                                 <span class="text-red-500 text-xs ">{{ $message }}</span>
                             @enderror
@@ -35,7 +35,7 @@
 
                         <div>
                             <x-forms.input label="CPF" id="cpf" name="cpf" type="text"
-                                placeholder="Ex: 000.000.000-00" />
+                                placeholder="Ex: 000.000.000-00" value="{{ old('cpf') }}" />
                             @error('cpf')
                                 <span class="text-red-500 text-xs ">{{ $message }}</span>
                             @enderror
@@ -43,7 +43,7 @@
 
                        <div>
                          <x-forms.input label="CEP" id="cep" name="cep" type="text"
-                            placeholder="Ex: 00000-000" />
+                            placeholder="Ex: 00000-000" value="{{ old('cep') }}" />
                         @error('cep')
                             <span class="text-red-500 text-xs ">{{ $message }}</span>
                         @enderror
@@ -52,32 +52,37 @@
 
                     <div class="flex flex-col gap-6">
                         <div>
-                            <x-forms.input label="Rua" id="street" name="address[street]" type="text" />
+                            <x-forms.input label="Rua" id="street" name="address[street]" type="text"
+                                value="{{ old('address.street') }}" />
                             @error('address.street')
                                 <span class="text-red-500 text-xs ">{{ $message }}</span>
                             @enderror
                         </div>
                         <div>
-                            <x-forms.input label="Cidade" id="city" name="address[city]" type="text" />
+                            <x-forms.input label="Cidade" id="city" name="address[city]" type="text"
+                                value="{{ old('address.city') }}" />
                             @error('address.city')
                                 <span class="text-red-500 text-xs ">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="grid grid-cols-3 md:grid-cols-3 gap-6">
                             <div>
-                                <x-forms.input label="Número" id="number" name="address[number]" type="text" />
+                                <x-forms.input label="Número" id="number" name="address[number]" type="text"
+                                    value="{{ old('address.number') }}" />
                                 @error('address.number')
                                     <span class="text-red-500 text-xs ">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div>
-                                <x-forms.input label="Estado" id="state" name="address[state]" type="text" />
+                                <x-forms.input label="Estado" id="state" name="address[state]" type="text"
+                                    value="{{ old('address.state') }}" />
                                 @error('address.state')
                                     <span class="text-red-500 text-xs ">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div>
-                                <x-forms.input label="País" id="country" name="address[country]" type="text" />
+                                <x-forms.input label="País" id="country" name="address[country]" type="text"
+                                    value="{{ old('address.country') }}" />
                                 @error('address.country')
                                     <span class="text-red-500 text-xs ">{{ $message }}</span>
                                 @enderror
